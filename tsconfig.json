@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es2019",
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["es2015", "es2017", "es2018", "es2019", "dom"],
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": false,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "allowUnreachableCode": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [],
+    "incremental": true,
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "transform": "./modules/styling-transform/lib/styleTransform.ts",
+        "prefix": "css",
+        "fallbackFiles": []
+      }
+    ]
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "exclude": [
+    "cypress",
+    "node_modules",
+    "modules/**/dist/*",
+    "modules/**/ts-tmp/*",
+    "docs",
+    "utils/**/spec/*",
+    "modules/**/spec/*",
+    "modules/**/stories/*",
+    "jest/**/*"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "name": "@workday/canvas-kit-react",
+  "version": "10.0.12",
+  "description": "The parent module that contains all Workday Canvas Kit React components",
+  "author": "Workday, Inc. (https://www.workday.com)",
+  "license": "Apache-2.0",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es6/index.js",
+  "sideEffects": false,
+  "types": "dist/es6/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workday/canvas-kit.git",
+    "directory": "modules/react"
+  },
+  "files": [
+    "*/package.json",
+    "*/lib/*",
+    "*/index.ts",
+    "dist/",
+    "index.ts"
+  ],
+  "scripts": {
+    "watch": "yarn build:es6 -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist && rimraf .build-info && mkdirp dist",
+    "build:cjs": "ttsc -p tsconfig.cjs.json",
+    "build:es6": "ttsc -p tsconfig.es6.json",
+    "build:rebuild": "npm-run-all clean build",
+    "build": "npm-run-all --parallel build:cjs build:es6",
+    "prepack": "node ../../utils/publish.js pre react",
+    "postpack": "node ../../utils/publish.js post react",
+    "depcheck": "node ../../utils/check-dependencies-exist.js",
+    "typecheck:src": "tsc -p . --noEmit --incremental false"
+  },
+  "keywords": [
+    "canvas",
+    "canvas-kit",
+    "react",
+    "components",
+    "workday"
+  ],
+  "peerDependencies": {
+    "react": ">=16.14"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.7.1",
+    "@emotion/is-prop-valid": "^1.1.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@emotion/utils": "^1.0.0",
+    "@popperjs/core": "^2.5.4",
+    "@workday/canvas-colors-web": "^2.0.0",
+    "@workday/canvas-kit-popup-stack": "^10.0.12",
+    "@workday/canvas-kit-styling": "^10.0.12",
+    "@workday/canvas-system-icons-web": "^3.0.0",
+    "@workday/canvas-tokens-web": "^1.0.0",
+    "@workday/design-assets-types": "^0.2.8",
+    "chroma-js": "^2.1.0",
+    "csstype": "^3.0.2",
+    "polished": "^4.1.3",
+    "react-innertext": "^1.1.5",
+    "react-virtual": "^2.10.4",
+    "resize-observer-polyfill": "^1.5.1",
+    "rtl-css-js": "^1.14.1",
+    "screenfull": "^5.2.0",
+    "use-resize-observer": "~7.0.1"
+  },
+  "devDependencies": {
+    "@workday/canvas-accent-icons-web": "^3.0.0",
+    "@workday/canvas-applet-icons-web": "^2.0.0"
+  }
+}

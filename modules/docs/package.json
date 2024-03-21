@@ -1,0 +1,62 @@
+{
+  "name": "@workday/canvas-kit-docs",
+  "version": "10.0.12",
+  "description": "Documentation components of Canvas Kit components",
+  "author": "Workday, Inc. (https://www.workday.com)",
+  "license": "Apache-2.0",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es6/index.js",
+  "sideEffects": true,
+  "types": "dist/es6/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workday/canvas-kit.git",
+    "directory": "modules/docs"
+  },
+  "files": [
+    "dist/",
+    "lib/",
+    "webpack/",
+    "index.ts"
+  ],
+  "scripts": {
+    "watch": "yarn build:es6 -w",
+    "clean": "rimraf dist && rimraf .build-info && mkdirp dist",
+    "build:mdx": "node ./utils/build-mdx.js mdx/",
+    "build:es6": "tsc -p tsconfig.es6.json",
+    "build:docs": "node ./utils/build-docs.js",
+    "build:rebuild": "npm-run-all clean build",
+    "build:specs": "node ./utils/build-specifications.js",
+    "build": "npm-run-all --parallel build:es6 build:mdx --parallel build:specs build:docs",
+    "depcheck": "node ../../utils/check-dependencies-exist.js",
+    "typecheck:src": "tsc -p . --noEmit --incremental false"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "canvas",
+    "canvas-kit",
+    "react",
+    "components",
+    "workday"
+  ],
+  "dependencies": {
+    "@emotion/styled": "^11.6.0",
+    "@storybook/csf": "0.0.1",
+    "@workday/canvas-kit-labs-react": "^10.0.12",
+    "@workday/canvas-kit-preview-react": "^10.0.12",
+    "@workday/canvas-kit-react": "^10.0.12",
+    "@workday/canvas-kit-styling": "^10.0.12",
+    "@workday/canvas-system-icons-web": "^3.0.0",
+    "@workday/canvas-tokens-web": "^1.0.0",
+    "markdown-to-jsx": "^6.10.3",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.6",
+    "mkdirp": "^1.0.3",
+    "typescript": "4.2"
+  }
+}
